@@ -1,0 +1,34 @@
+
+Programa para consultar ofertas de empleo en computrabajo.com
+
+PARÁMETROS
+
+experiencia:
+    4 : 1 año
+    5 : 2 años
+    6 : 3-4 años
+    7 : 5-10 años
+
+fecha actualización:
+    99 : urgente
+    1 : hoy
+    3 : últimos 3 días
+    7 : ultima semana
+    15 : últimos 15 días
+    30 : mes
+
+salario:
+    1: menos 700
+    2 : más de 700
+    3 : más de millón
+    4 : más de 1.5 millón
+    .
+    .
+    .
+    14 : más de 10 millones
+
+tipo contrato:
+    4 : obra o labor
+    6 : término fijo
+    5 : término indedinido
+    3 : prestación servicios
