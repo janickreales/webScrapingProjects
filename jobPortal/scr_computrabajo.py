@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 # https://co.computrabajo.com/
-# Se utilizará selenium por la
 
 
 
@@ -14,6 +13,7 @@ from bs4 import BeautifulSoup
 
 main_page = 'https://co.computrabajo.com'
 
+## Se define la URL que se pasará a Request (depende de si se pasa un lugar como argumento)
 def getUrl():
     # cargo = input('Ingrese el cargo requerido: ').replace(' ','-').lower()
     # lugar = input('Ingrese ciudad (opcional): ').replace(' ','-').lower()
@@ -27,12 +27,8 @@ def getUrl():
 
     return url
 
-def filterJobTitle(str):
-    keywords = sys.argv[4].split(',')
-    return any(keyword in str.lower() for keyword in keywords)
-
+## Se definen los parámetros a pasar al Requests
 def getParams(p=''):
-    # print('\nLos siguientes parámetros son opcionales')
     sal = '' #input('Rango salarial: ')
     iex = '' #input('Años de experiencia: ')
     pubdate = sys.argv[3] #input('Fecha actualización: ')
@@ -43,7 +39,7 @@ def getParams(p=''):
 
     return params
 
-
+## Se crea el objeto BeautifulSoup
 def extract_soup(url,params={}):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0'}
     page = requests.get(url, headers=headers, params=params)
@@ -51,6 +47,8 @@ def extract_soup(url,params={}):
 
     return soup
 
+## Función para entrar a cada vacante y extraer el tag del salario. 
+## Se puede adecuar para extraer cualquier otra información (como descripción...)
 def extract_salario(link):
     soup = extract_soup(link)
     oferta = soup.find('div', attrs={'div-link':'oferta'})
@@ -61,12 +59,16 @@ def extract_salario(link):
     return salario
 
 
-def get_job_info(soup):
-    ## filtramos vacantes que cumplan con keywords
-    # h2_elems = soup.find_all('h2', string=filterJobTitle)
+## Se filtran los títulos de vacantes que cumplan con ciertas caractarísticas
+def filterJobTitle(str):
+    excluir = ['practicante','aprendiz']
+    keywords = sys.argv[4].split(',')
+    return ((not any(excl in str.lower() for excl in excluir)) 
+            and (any(keyword in str.lower() for keyword in keywords)))
 
+## Función para extraer la información básica a exportar
+def get_job_info(soup):
     ## buscamos el tag "padre"
-    # elems = [h2_elem.parent.parent for h2_elem in h2_elems]
     elems = soup.find_all('article', class_='box_offer')
 
     ## agregamos las vacantes encontradas a una lista
@@ -81,9 +83,11 @@ def get_job_info(soup):
                'Ciudad': data_compl[-1].strip(),
                'Link': href_.strip()
                 })
-        
+
     return job_lst
-    
+
+
+ ## Se integra todo el proceso   
 def getInfo():
     ### Inputs
     url = getUrl()
@@ -96,6 +100,8 @@ def getInfo():
 
     i = 1
     job_list = []
+    
+    #Se llena job_list hasta que se alcance el # total de vacantes que arroja la página
     while len(job_list) < n:
         params['p']=i
         soup = extract_soup(url,params)
@@ -108,7 +114,8 @@ def getInfo():
 
 if __name__ == '__main__':
     # start_time = time.time()
-    dict_vacantes = getInfo()
+    dict_vacantes_v1 = getInfo()
+    dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
     claves = list(dict_vacantes[0].keys())
 
     ## creamos directorio para contener archivos si no existe
@@ -123,5 +130,4 @@ if __name__ == '__main__':
         writer.writeheader()
         writer.writerows(dict_vacantes)
 
-    # print(f'\n¡¡{len(dict_vacantes)} vacantes encontradas. Se almacenan en archivo vacantes_{consec}.csv!!')
     print(filename)

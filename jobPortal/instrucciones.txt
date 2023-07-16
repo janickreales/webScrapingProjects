@@ -1,15 +1,19 @@
 
 Programa para consultar ofertas de empleo en computrabajo.com
 
-PARÁMETROS
+PARÁMETROS:
+Al script "scr_computrabajo.py" se le pueden pasar algunos parámetros (función getParams())
+A continuación el significado de cada uno:
 
-experiencia:
+p : # página
+
+experiencia (iex):
     4 : 1 año
     5 : 2 años
     6 : 3-4 años
     7 : 5-10 años
 
-fecha actualización:
+fecha actualización (pubdate):
     99 : urgente
     1 : hoy
     3 : últimos 3 días
@@ -17,7 +21,7 @@ fecha actualización:
     15 : últimos 15 días
     30 : mes
 
-salario:
+salario (sal):
     1: menos 700
     2 : más de 700
     3 : más de millón
@@ -27,8 +31,22 @@ salario:
     .
     14 : más de 10 millones
 
-tipo contrato:
+tipo contrato (cont):
     4 : obra o labor
     6 : término fijo
     5 : término indedinido
     3 : prestación servicios
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+-> El script "scr_computrabajo.py" utiliza BeautifulSoup para traer información de vacantes de empleo de la página
+"computrabajo.com".
+-> El script se construyó de forma que reciba parámetos (para ser llamado por otro script de python).
+-> Cada parte del código se construyó en una función y luego todo se junta al final para generar una lista con las 
+vacantes de empleo encontradas, que posteriormente se almacena en un archivo ".csv" con un consecutivo para
+identificar la fecha y hora exacta de ejecución. 
+
+-> "sendEmail.py" se construyó para adjuntar el csv generado por el script anterior y enviarlo a un correo especificado. 
+
+-> "send_JobEmail.py" integra los dos procesos anteriores.

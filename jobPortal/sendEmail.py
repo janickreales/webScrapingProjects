@@ -27,7 +27,7 @@ body = f"""Vacantes de empleo para hoy: {time.strftime('%Y-%m-%d_%H:%M:%S', time
 em = MIMEMultipart("alternative")
 em['From'] = email_sender
 em['To'] = email_receiver
-em["Bcc"] = 'janickresa@outlook.com'
+em["Bcc"] = ''
 em['Subject'] = subject
 # em.set_content(body)
 
