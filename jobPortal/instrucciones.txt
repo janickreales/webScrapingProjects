@@ -50,3 +50,7 @@ identificar la fecha y hora exacta de ejecución.
 -> "sendEmail.py" se construyó para adjuntar el csv generado por el script anterior y enviarlo a un correo especificado. 
 
 -> "send_JobEmail.py" integra los dos procesos anteriores.
+
+-> La ventaja de buscar las vacantes de esta forma es la posibilidad de automatizar todos los filtros que normalmnete se realizan,
+descartar lo que no queremos y enfocarnos solo en las vacantes cuyo título cumple con las características buscadas
+

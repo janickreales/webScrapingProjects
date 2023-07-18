@@ -61,7 +61,7 @@ def extract_salario(link):
 
 ## Se filtran los títulos de vacantes que cumplan con ciertas caractarísticas
 def filterJobTitle(str):
-    excluir = ['practicante','aprendiz']
+    excluir = ['practicante','aprendiz','estudiante']
     keywords = sys.argv[4].split(',')
     return ((not any(excl in str.lower() for excl in excluir)) 
             and (any(keyword in str.lower() for keyword in keywords)))

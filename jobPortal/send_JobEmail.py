@@ -7,7 +7,7 @@ import os
 import sys
 import subprocess
 
-keywords_psico = 'psicolo,psicól,recursos,gener,human'
+keywords_psico = 'psicolo,psicól,recursos,gener,human,social,selec'
 keywords_aux = 'admin,recursos,gener,human,auxil'
 vacantes = {'psicologia':keywords_psico,'auxiliar administrativa':keywords_aux}
 
@@ -16,7 +16,7 @@ for vacante,keywords in vacantes.items():
     
     ## Obtenemos el nombre del último archivo generado
     os.chdir('/mnt/d/LEARNING/PYTHON/webScrapingProjects/jobPortal')
-    nombre_arch = subprocess.check_output([sys.executable, "scr_computrabajo.py",vacante,'medellin','1',keywords])
+    nombre_arch = subprocess.check_output([sys.executable, "scr_computrabajo.py",vacante,'medellin','3',keywords])
     ruta_archivo = f'/mnt/d/LEARNING/PYTHON/webScrapingProjects/jobPortal/{nombre_arch.strip().decode()}'
     print(f'Archivo de vacantes para "{vacante}" generado')
 
