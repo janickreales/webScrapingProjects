@@ -17,8 +17,8 @@ main_page = 'https://co.computrabajo.com'
 def getUrl():
     # cargo = input('Ingrese el cargo requerido: ').replace(' ','-').lower()
     # lugar = input('Ingrese ciudad (opcional): ').replace(' ','-').lower()
-    cargo = sys.argv[1]
-    lugar = sys.argv[2]
+    cargo = sys.argv[1].replace(' ','-').lower()
+    lugar = sys.argv[2].replace(' ','-').lower()
 
     if lugar == '':
         url = f'{main_page}/trabajo-de-{cargo}'
@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
     ## se crea un consecutivo (fecha_hora ejecución) y se crea csv
     consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
-    filename = f'vacantes/vacantes_{consec}.csv'
+    filename = f"vacantes/vacantes_computrabajo_{sys.argv[1].replace(' ','-').lower()}_{consec}.csv"
     with open(filename,'w',newline='',encoding='utf-8-sig') as w:
         writer = csv.DictWriter(w,fieldnames=claves)
         writer.writeheader()
