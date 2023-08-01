@@ -54,3 +54,28 @@ identificar la fecha y hora exacta de ejecución.
 -> La ventaja de buscar las vacantes de esta forma es la posibilidad de automatizar todos los filtros que normalmnete se realizan,
 descartar lo que no queremos y enfocarnos solo en las vacantes cuyo título cumple con las características buscadas
 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- INDEED -----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-> Script desarrollado utilizando Selenium y BeautifulSoup 
+-> Se trató de construir una estructura similar a la del script de computrabajo
+
+-> Se incluye una función para navegar por las páginas (next_page) de manera que se puedan traer todas las ofertas
+-> Igualmente, se almacena el resultado en un csv y se puede enviar por correo 
+
+
+
+
+
+
+
+
+
+
+
+
+

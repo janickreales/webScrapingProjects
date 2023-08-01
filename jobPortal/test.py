@@ -1,56 +1,31 @@
-
-#!/usr/bin/env python3
-
+import os
+import sys
+import csv
+import time
+import requests
+from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
-from bs4 import BeautifulSoup
-import requests
-import sys
 
 
-url = 'https://co.indeed.com/jobs'
-params = {'q':'psicologa','l':'medellin'}
-page = requests.get(url, params=params)
-main_page = page.url
-# main_page = 'https://co.indeed.com/jobs?q=psicologa&l=Medell%C3%ADn%2C+Antioquia&start=20&pp=gQAeAAAAAAAAAAAAAAACCtbXLwAdAQEBByvjyEk1BoF1GoK72bJRoTJehYWR8tyCRvsAAA&vjk=8181d0d861462a42'
+# options = Options()
+# options.add_argument("--headless")
+# driver = webdriver.Firefox(executable_path="/mnt/d/LEARNING/PYTHON/webScrapingProjects/geckodriver.exe",options=options)
+driver = webdriver.Firefox()
+driver.get('https://co.indeed.com/jobs?q=psicologo&l=Medell%C3%ADn%2C+Antioquia&fromage=3&vjk=edfc1a52e66f3192')
+time.sleep(3)
 
 
-def next_page(driver):
-    try:
-        elem = driver.find_elements(By.CSS_SELECTOR,'.css-13p07ha.e8ju0x50')
-        elem[-1].click()
 
-        print('Next page')
-    except:
-        print('No next page')
+soup = BeautifulSoup(driver.page_source, 'html.parser')
 
+## vacantes
+v_class = 'jobsearch-JobCountAndSortPane-jobCount css-1af0d6o eu4oa1w0'
+n_jobs = soup.find('div', class_= v_class).find('span')
+n = int(n_jobs.text.split(' ')[0])
 
-def handledPopUp(driver):
-    popup = '.css-yi9ndv > svg:nth-child(1)'
-    try:
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, popup)))
-        close_popup = driver.find_element(By.CSS_SELECTOR, popup)
-        close_popup.click()
-
-        print(f'Pop Up cerrado')
-    except:
-        print(f'Pop Up no apareció')
-
-
-def getUrl():
-    cargo = sys.argv[1].replace(' ','-').lower()
-    lugar = sys.argv[2].replace(' ','-').lower()
-
-
-    root_url = 'https://co.indeed.com/jobs'
-    params = {'q':cargo,'l':lugar}
-    page = requests.get(root_url, params=params)
-    return page.url
-
-print(getUrl())
-
+print(n)

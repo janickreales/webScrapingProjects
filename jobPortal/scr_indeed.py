@@ -15,14 +15,18 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+root_page = 'https://co.indeed.com'
 
+
+## se arma URL para el driver
 def getUrl():
-    cargo = sys.argv[1].replace(' ','-').lower()
-    lugar = sys.argv[2].replace(' ','-').lower()
+    cargo = sys.argv[1]
+    lugar = sys.argv[2]
+    fecha_act = sys.argv[3]
 
 
     root_url = 'https://co.indeed.com/jobs'
-    params = {'q':cargo,'l':lugar}
+    params = {'q':cargo,'l':lugar,'fromage':fecha_act}
     page = requests.get(root_url, params=params)
     return page.url
 
@@ -62,7 +66,7 @@ def extract_soup(page_source):
 ## Se filtran los títulos de vacantes que cumplan con ciertas caractarísticas
 def filterJobTitle(str):
     excluir = ['practicante','aprendiz','estudiante']
-    keywords = sys.argv[3].split(',')
+    keywords = sys.argv[4].split(',')
     return ((not any(excl in str.lower() for excl in excluir)) 
             and (any(keyword in str.lower() for keyword in keywords)))
 
@@ -92,9 +96,12 @@ def getJobs_Indeed():
     soup = extract_soup(driver.page_source)
     
     ## vacantes
-    v_class = 'jobsearch-JobCountAndSortPane-jobCount css-1af0d6o eu4oa1w0'
-    n_jobs = soup.find('div', class_= v_class).find('span')
-    n = int(n_jobs.text.split(' ')[0])
+    try: 
+        v_class = 'jobsearch-JobCountAndSortPane-jobCount css-1af0d6o eu4oa1w0'
+        n_jobs = soup.find('div', class_= v_class).find('span')
+        n = int(n_jobs.text.split(' ')[0])
+    except:
+        n=0
     
     page = 1
     job_list = []
@@ -110,8 +117,8 @@ def getJobs_Indeed():
         page+=1
 
         # pop up
-        if page == 2:
-            handledPopUp(driver)
+        # if page == 2:
+        handledPopUp(driver)
     
     return job_list
 
@@ -119,6 +126,7 @@ def getJobs_Indeed():
 
 options = Options()
 options.add_argument("--headless")
+# driver = webdriver.Firefox(executable_path="/mnt/d/LEARNING/PYTHON/webScrapingProjects/geckodriver.exe",options=options)
 driver = webdriver.Firefox(options=options)
 driver.get(getUrl())
 time.sleep(3)
@@ -126,6 +134,7 @@ time.sleep(3)
 
 if __name__ == '__main__':
     # start_time = time.time()
+    # try:
     dict_vacantes_v1 = getJobs_Indeed()
     dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
     claves = list(dict_vacantes[0].keys())
@@ -136,12 +145,14 @@ if __name__ == '__main__':
 
     ## se crea un consecutivo (fecha_hora ejecución) y se crea csv
     consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
-    filename = f"vacantes/vacantes_indeed_{sys.argv[1].replace(' ','-').lower()}_{consec}.csv"
+    filename = f"vacantes/vacantes_indeed_{'auxiliar administrativa'.replace(' ','-').lower()}_{consec}.csv"
     with open(filename,'w',newline='',encoding='utf-8-sig') as w:
         writer = csv.DictWriter(w,fieldnames=claves)
         writer.writeheader()
         writer.writerows(dict_vacantes)
 
     print(filename)
+    # except:
+    #     pass
 
 driver.close()

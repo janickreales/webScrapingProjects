@@ -35,22 +35,23 @@ em['Subject'] = subject
 em.attach(MIMEText(body, "plain"))
 
 
-filename = sys.argv[2]
-with open(filename, "rb") as attachment:
-    # Add file as application/octet-stream
-    # Email client can usually download this automatically as attachment
-    part = MIMEBase("application", "octet-stream")
-    part.set_payload(attachment.read())
+filenames = sys.argv[2].split(',')
+for filename in filenames:
+    with open(filename, "rb") as attachment:
+        # Add file as application/octet-stream
+        # Email client can usually download this automatically as attachment
+        part = MIMEBase("application", "octet-stream")
+        part.set_payload(attachment.read())
 
-# Encode file in ASCII characters to send by email    
-encoders.encode_base64(part)
-em.attach(part)
+    # Encode file in ASCII characters to send by email    
+    encoders.encode_base64(part)
+    em.attach(part)
 
-# Add header as key/value pair to attachment part
-part.add_header(
-    "Content-Disposition",
-    f"attachment; filename= {filename.split('/')[-1]}",
-)
+    # Add header as key/value pair to attachment part
+    part.add_header(
+        "Content-Disposition",
+        f"attachment; filename= {filename.split('/')[-1]}",
+    )
 
 context = ssl.create_default_context()
 with smtplib.SMTP_SSL('smtp.gmail.com', port=465, context=context) as smtp:
