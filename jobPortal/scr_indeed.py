@@ -45,6 +45,7 @@ def handledPopUp(driver):
         pass
 
 ### Función para navegar entre páginas
+### Se utiliza para hacer "clic" en el botón ">" de Indeed
 def next_page(driver):
     time.sleep(2)
     try:
@@ -96,6 +97,7 @@ def getJobs_Indeed():
     soup = extract_soup(driver.page_source)
     
     ## vacantes
+    ## se extrae el valor del número de vacantes que encuentra la página
     try: 
         v_class = 'jobsearch-JobCountAndSortPane-jobCount css-1af0d6o eu4oa1w0'
         n_jobs = soup.find('div', class_= v_class).find('span')
@@ -105,11 +107,13 @@ def getJobs_Indeed():
     
     page = 1
     job_list = []
+
+    # se itera entra las páginas hasta alcanzar el # de vacantes n
     while len(job_list)<n:
         # soup
         soup = extract_soup(driver.page_source)
 
-        # jobs 
+        # se adjuntan las vacantes a una lista 
         job_list+=get_job_info(soup)
 
         #next_page 
@@ -135,6 +139,8 @@ time.sleep(3)
 if __name__ == '__main__':
     # start_time = time.time()
     # try:
+
+    # se aplica el filtro a las vacantes 
     dict_vacantes_v1 = getJobs_Indeed()
     dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
     claves = list(dict_vacantes[0].keys())

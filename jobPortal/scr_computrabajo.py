@@ -28,6 +28,8 @@ def getUrl():
     return url
 
 ## Se definen los parámetros a pasar al Requests
+# se dejan vacíos todos los parámetros
+# En instrucciones.txt se indican los valores con los que pueden llenarse
 def getParams(p=''):
     sal = '' #input('Rango salarial: ')
     iex = '' #input('Años de experiencia: ')

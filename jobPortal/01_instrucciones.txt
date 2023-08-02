@@ -1,0 +1,81 @@
+
+Programa para consultar ofertas de empleo en computrabajo.com
+
+PARÁMETROS:
+Al script "scr_computrabajo.py" se le pueden pasar algunos parámetros (función getParams())
+A continuación el significado de cada uno:
+
+p : # página
+
+experiencia (iex):
+    4 : 1 año
+    5 : 2 años
+    6 : 3-4 años
+    7 : 5-10 años
+
+fecha actualización (pubdate):
+    99 : urgente
+    1 : hoy
+    3 : últimos 3 días
+    7 : ultima semana
+    15 : últimos 15 días
+    30 : mes
+
+salario (sal):
+    1: menos 700
+    2 : más de 700
+    3 : más de millón
+    4 : más de 1.5 millón
+    .
+    .
+    .
+    14 : más de 10 millones
+
+tipo contrato (cont):
+    4 : obra o labor
+    6 : término fijo
+    5 : término indedinido
+    3 : prestación servicios
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+-> El script "scr_computrabajo.py" utiliza BeautifulSoup para traer información de vacantes de empleo de la página
+"computrabajo.com".
+-> El script se construyó de forma que reciba parámetos (para ser llamado por otro script de python).
+-> Cada parte del código se construyó en una función y luego todo se junta al final para generar una lista con las 
+vacantes de empleo encontradas, que posteriormente se almacena en un archivo ".csv" con un consecutivo para
+identificar la fecha y hora exacta de ejecución. 
+
+-> "sendEmail.py" se construyó para adjuntar el csv generado por el script anterior y enviarlo a un correo especificado. 
+
+-> "send_JobEmail.py" integra los dos procesos anteriores.
+
+-> La ventaja de buscar las vacantes de esta forma es la posibilidad de automatizar todos los filtros que normalmnete se realizan,
+descartar lo que no queremos y enfocarnos solo en las vacantes cuyo título cumple con las características buscadas
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- INDEED -----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+-> Script desarrollado utilizando Selenium y BeautifulSoup 
+-> Se trató de construir una estructura similar a la del script de computrabajo
+
+-> Se incluye una función para navegar por las páginas (next_page) de manera que se puedan traer todas las ofertas
+-> Igualmente, se almacena el resultado en un csv y se puede enviar por correo 
+
+
+
+
+
+
+
+
+
+
+
+
+
