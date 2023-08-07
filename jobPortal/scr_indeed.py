@@ -104,12 +104,17 @@ def getJobs_Indeed():
         n = int(n_jobs.text.split(' ')[0])
     except:
         n=0
+
+    n=12
     
     page = 1
     job_list = []
 
     # se itera entra las páginas hasta alcanzar el # de vacantes n
+    
     while len(job_list)<n:
+        start_time = time.time()
+
         # soup
         soup = extract_soup(driver.page_source)
 
@@ -122,7 +127,12 @@ def getJobs_Indeed():
 
         # pop up
         # if page == 2:
+        time.sleep(2)
         handledPopUp(driver)
+
+        # se sale si demora la iteración
+        if (time.time() - start_time) > 15:
+            break
     
     return job_list
 
@@ -133,7 +143,7 @@ options.add_argument("--headless")
 # driver = webdriver.Firefox(executable_path="/mnt/d/LEARNING/PYTHON/webScrapingProjects/geckodriver.exe",options=options)
 driver = webdriver.Firefox(options=options)
 driver.get(getUrl())
-time.sleep(3)
+time.sleep(4)
 
 
 if __name__ == '__main__':
@@ -151,7 +161,7 @@ if __name__ == '__main__':
 
     ## se crea un consecutivo (fecha_hora ejecución) y se crea csv
     consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
-    filename = f"vacantes/vacantes_indeed_{'auxiliar administrativa'.replace(' ','-').lower()}_{consec}.csv"
+    filename = f"vacantes/vacantes_indeed_{sys.argv[1].replace(' ','-').lower()}_{consec}.csv"
     with open(filename,'w',newline='',encoding='utf-8-sig') as w:
         writer = csv.DictWriter(w,fieldnames=claves)
         writer.writeheader()
