@@ -1,0 +1,82 @@
+1691422008462	geckodriver	INFO	Listening on 127.0.0.1:55519
+1691422011520	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--remote-debugging-port" "55520" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Asus\\AppData\\Local\\Temp\\rust_mozprofilekG0YwA"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1691422011910	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1691422011998	Marionette	INFO	Listening on port 55531
+WebDriver BiDi listening on ws://127.0.0.1:55520
+Read port: 55531
+1691422012276	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:55520/devtools/browser/14e0a79f-0662-4bf5-8e3a-62f0cc4455a3
+JavaScript warning: https://www.elempleo.com/resources/Scripts/Vendor/omniture_prod.js, line 145: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1942199030, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1942199030, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1942199030, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1942199030 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=1942199030 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://pagead2.googlesyndication.com/bg/XE-eSxg4gZ8v28buoH5xKIZwH3Gkn_IqRFqb49XH2AY.js line 2 > eval line 6388 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://pagead2.googlesyndication.com/bg/XE-eSxg4gZ8v28buoH5xKIZwH3Gkn_IqRFqb49XH2AY.js line 2 > eval line 6992 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1691422040535	geckodriver	INFO	Listening on 127.0.0.1:55666
+1691422043599	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55667" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Asus\\AppData\\Local\\Temp\\rust_mozprofileZOJhAP"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1691422043990	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1691422044109	Marionette	INFO	Listening on port 55675
+WebDriver BiDi listening on ws://127.0.0.1:55667
+Read port: 55675
+1691422044326	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:55667/devtools/browser/92d9a244-0279-40b5-9432-f569b34d1398
+JavaScript warning: https://www.elempleo.com/resources/Scripts/Vendor/omniture_prod.js, line 145: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=2034786596, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=2034786596, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=2034786596, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=2034786596 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=3&cb=2034786596 line 1 > eval, line 1: unreachable code after return statement
+[Parent 12292, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:621
+[GPU 13688, IPC I/O Child] WARNING: pipe error: 232: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:443
+JavaScript warning: https://pagead2.googlesyndication.com/bg/XE-eSxg4gZ8v28buoH5xKIZwH3Gkn_IqRFqb49XH2AY.js line 2 > eval line 1358 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1691422069494	geckodriver	INFO	Listening on 127.0.0.1:55802
+1691422072582	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55803" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Asus\\AppData\\Local\\Temp\\rust_mozprofileM16oX6"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1691422072975	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1691422073094	Marionette	INFO	Listening on port 55812
+WebDriver BiDi listening on ws://127.0.0.1:55803
+Read port: 55812
+1691422073373	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:55803/devtools/browser/e5f5ae9f-93a5-442e-9f59-40e536094299
+JavaScript warning: https://www.elempleo.com/resources/Scripts/Vendor/omniture_prod.js, line 145: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=21480021, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=21480021, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=21480021, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=21480021 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=5&cb=21480021 line 1 > eval, line 1: unreachable code after return statement
+[Parent 17648, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:621
+[GPU 14172, IPC I/O Child] WARNING: pipe error: 232: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:443
+JavaScript warning: https://pagead2.googlesyndication.com/bg/XE-eSxg4gZ8v28buoH5xKIZwH3Gkn_IqRFqb49XH2AY.js line 2 > eval line 5841 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1691425990275	geckodriver	INFO	Listening on 127.0.0.1:51730
+1691425993310	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51731" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Asus\\AppData\\Local\\Temp\\rust_mozprofiley8U3gz"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1691425993737	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1691425993864	Marionette	INFO	Listening on port 51741
+WebDriver BiDi listening on ws://127.0.0.1:51731
+Read port: 51741
+1691425994185	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+DevTools listening on ws://127.0.0.1:51731/devtools/browser/ec80c102-90f6-43ea-b9f5-8f4daf0499ea
+JavaScript warning: https://www.elempleo.com/resources/Scripts/Vendor/omniture_prod.js, line 145: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=458055089, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=458055089, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=458055089, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=458055089 line 1 > eval, line 1: unreachable code after return statement
+JavaScript warning: https://www.elempleo.com/_Incapsula_Resource?SWJIYLWA=719d34d31c8e3a6e6fffd425f7e032f3&ns=1&cb=458055089 line 1 > eval, line 1: unreachable code after return statement
+[Parent 2372, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:621
+[GPU 20612, IPC I/O Child] WARNING: pipe error: 232: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:443
+JavaScript warning: https://pagead2.googlesyndication.com/bg/XE-eSxg4gZ8v28buoH5xKIZwH3Gkn_IqRFqb49XH2AY.js line 2 > eval line 252 > eval line 1 > eval line 1 > eval, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
