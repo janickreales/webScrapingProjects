@@ -152,23 +152,25 @@ if __name__ == '__main__':
 
     # se aplica el filtro a las vacantes 
     dict_vacantes_v1 = getJobs_Indeed()
-    dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
-    claves = list(dict_vacantes[0].keys())
+    
+    if len(dict_vacantes_v1)!=0:
+        dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
+        claves = list(dict_vacantes[0].keys())
 
-    ## creamos directorio para contener archivos si no existe
-    if not os.path.exists('vacantes'):
-        os.mkdir('vacantes')
+        ## creamos directorio para contener archivos si no existe
+        if not os.path.exists('vacantes'):
+            os.mkdir('vacantes')
 
-    ## se crea un consecutivo (fecha_hora ejecución) y se crea csv
-    consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
-    filename = f"vacantes/vacantes_indeed_{sys.argv[1].replace(' ','-').lower()}_{consec}.csv"
-    with open(filename,'w',newline='',encoding='utf-8-sig') as w:
-        writer = csv.DictWriter(w,fieldnames=claves)
-        writer.writeheader()
-        writer.writerows(dict_vacantes)
+        ## se crea un consecutivo (fecha_hora ejecución) y se crea csv
+        consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
+        filename = f"vacantes/vacantes_indeed_{sys.argv[1].replace(' ','-').lower()}_{consec}.csv"
+        with open(filename,'w',newline='',encoding='utf-8-sig') as w:
+            writer = csv.DictWriter(w,fieldnames=claves)
+            writer.writeheader()
+            writer.writerows(dict_vacantes)
 
-    print(filename)
-    # except:
-    #     pass
+        print(filename)
+    else:
+        print('')
 
 driver.close()

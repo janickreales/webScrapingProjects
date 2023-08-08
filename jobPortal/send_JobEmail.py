@@ -9,8 +9,7 @@ import subprocess
 
 keywords_psico = 'psicolo,psicól,recursos,gener,human,social,selec'
 keywords_aux = 'admin,recursos,gener,human,auxil'
-# vacantes = {'psicologia':keywords_psico,'auxiliar administrativa':keywords_aux}
-vacantes = {'auxiliar administrativa':keywords_aux}
+vacantes = {'psicologia':keywords_psico,'auxiliar administrativa':keywords_aux}
 
 #argumentos para subprocess --> 'posición buscada','ciudad','fecha_actualización','palabras clave'
 for vacante,keywords in vacantes.items():

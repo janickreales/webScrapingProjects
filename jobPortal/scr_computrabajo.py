@@ -117,6 +117,7 @@ def getInfo():
 if __name__ == '__main__':
     # start_time = time.time()
     dict_vacantes_v1 = getInfo()
+    
     dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
     claves = list(dict_vacantes[0].keys())
 

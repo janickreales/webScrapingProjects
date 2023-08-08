@@ -18,7 +18,7 @@ main_page = 'https://www.elempleo.com/co/ofertas-empleo'
 def getUrl():
     cargo = 'psicologo' #sys.argv[1].replace(' ','-').lower()
     lugar = '' #sys.argv[2].replace(' ','-').lower()
-    fecha_post = 'hace-1-semana'
+    fecha_post = 'hoy' #'hace-1-semana'
 
     url = f'{main_page}/{lugar}/{fecha_post}'
     page = requests.get(url, params={'trabajo':cargo})
@@ -52,17 +52,20 @@ time.sleep(1)
 ## clickear
 
 
-arrow = '.js-btn-next'
+# arrow = '.js-btn-next'
 
-c = 1
-while c != 0:
-    time.sleep(1)
-    try:
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, arrow)))
-        next_page = driver.find_element(By.CSS_SELECTOR, arrow)
-        next_page.click()
+# c = 1
+# while c != 0:
+#     time.sleep(1)
+#     try:
+#         WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, arrow)))
+#         next_page = driver.find_element(By.CSS_SELECTOR, arrow)
+#         next_page.click()
 
-        print(c)
-    except:
-        c = 0
-        print(c)
+#         print(c)
+#     except:
+#         c = 0
+#         print(c)
+
+total = soup.find('strong',class_='js-total-results')
+print(total.text.strip())

@@ -65,39 +65,59 @@ def filterJobTitle(str):
             and (any(keyword in str.lower() for keyword in keywords)))
 
 
+def next_page():
+    arrow = '.js-btn-next'
+
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, arrow)))
+    next_page = driver.find_element(By.CSS_SELECTOR, arrow)
+    next_page.click()
+
 ## unificación 
-def getJobs_Indeed():
-    soup = BeautifulSoup(driver.page_source, 'html.parser')
+def getJobs_elempleo():
 
     #aceptamos cookies 
     cookies()
     time.sleep(1)
 
-    ## listado empleos
-    jobs = get_job_info(soup)
+    # soup 
+    soup = BeautifulSoup(driver.page_source, 'html.parser')
+    job_lst = get_job_info(soup)
+
+    ## vacantes encontradas
+    try:
+        total = soup.find('strong',class_='js-total-results').text.strip()
+        n = int(total)
+    except:
+        n = 0
+
+    print(n)
+
+    while len(job_lst) <= n:
+        # siguiente página
+        next_page()
+
+        # soup 
+        soup = BeautifulSoup(driver.page_source, 'html.parser')
+
+        # agregamos a lista
+        job_lst += get_job_info(soup)
+    
+    return job_lst
+
 
 options = Options()
 # options.add_argument("--headless")
 driver = webdriver.Firefox(options=options)
 driver.get(getUrl())
 
-time.sleep(1)
+jobs = getJobs_elempleo()
 
-
-## obtener empleos
-soup = BeautifulSoup(driver.page_source, 'html.parser')
-
-cookies()
-time.sleep(1)
-
-jobs = get_job_info(soup)
-
-# print(len(jobs))
-print(jobs)
+print(len(jobs))
 
 
 
 
 
-driver.close()
+# driver.close()
+
 
