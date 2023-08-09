@@ -5,6 +5,7 @@ Para esto se construyó un Script de Python por cada página que se desee consul
 
 * [Script de computrabajo](https://github.com/janickreales/webScrapingProjects/blob/main/jobPortal/scr_computrabajo.py)  
 * [Script de Indeed](https://github.com/janickreales/webScrapingProjects/blob/main/jobPortal/scr_indeed.py)  
+* [Script de ElEmpleo](https://github.com/janickreales/webScrapingProjects/blob/main/jobPortal/scr_elempleo.py)  
 
 Los Scripts se irán modificando a medida que surjan nuevas necesidad. Por el momento el objetivo principal de crear estos scripts fue obtener información de algunas vacantes omitiendo toda la "basura" que suelen incluir los portales, además, automatizar el proceso de consulta de vacantes.   
 

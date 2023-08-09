@@ -68,9 +68,22 @@ descartar lo que no queremos y enfocarnos solo en las vacantes cuyo título cump
 -> Igualmente, se almacena el resultado en un csv y se puede enviar por correo 
 
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- EL EMPLEO -----------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
+-> Script similar al de INDEED
+-> Recibe 4 parámetros:
+    - Cargo
+    - Lugar 
+    - fecha de publicación:
+        * "hoy" <<-- hoy y ayer
+        * "hace-1-semana" <<-- última semana
+        * "hace-2-semanas" <<-- últimas 2 semanas
+        * "hace-1-mes" <<-- último mes
+        * "hace-mas-1-mes" <<-- más de 1 mes
+    - keywords
 
 
 

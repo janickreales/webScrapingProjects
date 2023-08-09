@@ -36,6 +36,7 @@ em.attach(MIMEText(body, "plain"))
 
 
 filenames = sys.argv[2].split(',')
+filenames = [file for file in filenames if 'vacante' in file]
 for filename in filenames:
     with open(filename, "rb") as attachment:
         # Add file as application/octet-stream

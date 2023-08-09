@@ -8,7 +8,7 @@ import sys
 import subprocess
 
 keywords_psico = 'psicolo,psicól,recursos,gener,human,social,selec'
-keywords_aux = 'admin,recursos,gener,human,auxil'
+keywords_aux = 'admin,recursos,gener,human,auxil,asist'
 vacantes = {'psicologia':keywords_psico,'auxiliar administrativa':keywords_aux}
 
 #argumentos para subprocess --> 'posición buscada','ciudad','fecha_actualización','palabras clave'
@@ -22,11 +22,12 @@ for vacante,keywords in vacantes.items():
     
     arch2 = subprocess.check_output([sys.executable, "scr_indeed.py",vacante,'medellin','3',keywords])
     ruta2 = f'D:/LEARNING/PYTHON/webScrapingProjects/jobPortal/{arch2.strip().decode()}'
+
+    arch3 = subprocess.check_output([sys.executable, "scr_elempleo.py",vacante,'medellin','hoy',keywords])
+    ruta3 = f'D:/LEARNING/PYTHON/webScrapingProjects/jobPortal/{arch3.strip().decode()}'
     
-    if 'vacantes' in arch2.strip().decode():
-        ruta_archivo = ruta1+','+ruta2
-    else:
-        ruta_archivo = ruta1
+    ## se concatenan las rutas
+    ruta_archivo = ruta1+','+ruta2+','+ruta3
     
     print(f'Archivos de vacantes para "{vacante}" generados')
 

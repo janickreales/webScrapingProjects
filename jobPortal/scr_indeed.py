@@ -66,7 +66,7 @@ def extract_soup(page_source):
 
 ## Se filtran los títulos de vacantes que cumplan con ciertas caractarísticas
 def filterJobTitle(str):
-    excluir = ['practicante','aprendiz','estudiante']
+    excluir = ['practicante','aprendiz','estudiante','enferm','obra','cocina','venta']
     keywords = sys.argv[4].split(',')
     return ((not any(excl in str.lower() for excl in excluir)) 
             and (any(keyword in str.lower() for keyword in keywords)))
@@ -106,12 +106,9 @@ def getJobs_Indeed():
         n=0
 
     n=12
-    
-    page = 1
-    job_list = []
 
     # se itera entra las páginas hasta alcanzar el # de vacantes n
-    
+    job_list = []
     while len(job_list)<n:
         start_time = time.time()
 
@@ -123,10 +120,8 @@ def getJobs_Indeed():
 
         #next_page 
         next_page(driver)
-        page+=1
 
         # pop up
-        # if page == 2:
         time.sleep(2)
         handledPopUp(driver)
 
@@ -140,20 +135,16 @@ def getJobs_Indeed():
 
 options = Options()
 options.add_argument("--headless")
-# driver = webdriver.Firefox(executable_path="/mnt/d/LEARNING/PYTHON/webScrapingProjects/geckodriver.exe",options=options)
 driver = webdriver.Firefox(options=options)
 driver.get(getUrl())
 time.sleep(4)
 
 
 if __name__ == '__main__':
-    # start_time = time.time()
-    # try:
-
     # se aplica el filtro a las vacantes 
     dict_vacantes_v1 = getJobs_Indeed()
     
-    if len(dict_vacantes_v1)!=0:
+    try:
         dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
         claves = list(dict_vacantes[0].keys())
 
@@ -170,7 +161,7 @@ if __name__ == '__main__':
             writer.writerows(dict_vacantes)
 
         print(filename)
-    else:
+    except:
         print('')
 
 driver.close()
