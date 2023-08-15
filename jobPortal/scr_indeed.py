@@ -14,8 +14,10 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from funciones_varias import *
 
 root_page = 'https://co.indeed.com'
+keywords = sys.argv[4]
 
 
 ## se arma URL para el driver
@@ -38,10 +40,7 @@ def handledPopUp(driver):
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, popup)))
         close_popup = driver.find_element(By.CSS_SELECTOR, popup)
         close_popup.click()
-
-        # print(f'Pop Up cerrado')
     except:
-        # print(f'Pop Up no apareció')
         pass
 
 ### Función para navegar entre páginas
@@ -51,10 +50,7 @@ def next_page(driver):
     try:
         elem = driver.find_elements(By.CSS_SELECTOR,'.css-13p07ha.e8ju0x50')
         elem[-1].click()
-
-        # print('Next page')
     except:
-        # print('No next page')
         pass
 
 
@@ -64,18 +60,10 @@ def extract_soup(page_source):
     return soup 
 
 
-## Se filtran los títulos de vacantes que cumplan con ciertas caractarísticas
-def filterJobTitle(str):
-    excluir = ['practicante','aprendiz','estudiante','enferm','obra','cocina','venta']
-    keywords = sys.argv[4].split(',')
-    return ((not any(excl in str.lower() for excl in excluir)) 
-            and (any(keyword in str.lower() for keyword in keywords)))
-
-
 ## Función para extraer la información básica a exportar
 def get_job_info(soup):
     ## buscamos el tag "padre"
-    elems = soup.find_all('td', class_='resultContent')
+    elems = soup.find_all('div', class_='slider_item')
 
     ## agregamos las vacantes encontradas a una lista
     job_lst = []
@@ -86,7 +74,8 @@ def get_job_info(soup):
         job_lst.append({'Titulo': elem.find('a').text.strip(),
                'Empresa': elem.find('span',class_='companyName').text.strip(),
                'Ciudad': elem.find('div',class_='companyLocation').text.strip(),
-               'Link': href_.strip()
+               'Link': href_.strip(),
+               'fecha_publicacion': get_time(elem.find('span',class_='date').text.strip())
                 })
 
     return job_lst
@@ -145,7 +134,7 @@ if __name__ == '__main__':
     dict_vacantes_v1 = getJobs_Indeed()
     
     try:
-        dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
+        dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'],keywords)]
         claves = list(dict_vacantes[0].keys())
 
         ## creamos directorio para contener archivos si no existe

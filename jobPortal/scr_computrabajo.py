@@ -2,16 +2,16 @@
 
 # https://co.computrabajo.com/
 
-
-
 import os
 import sys
 import csv
 import time
 import requests
 from bs4 import BeautifulSoup
+from funciones_varias import *
 
 main_page = 'https://co.computrabajo.com'
+keywords = sys.argv[4]
 
 ## Se define la URL que se pasará a Request (depende de si se pasa un lugar como argumento)
 def getUrl():
@@ -61,13 +61,6 @@ def extract_salario(link):
     return salario
 
 
-## Se filtran los títulos de vacantes que cumplan con ciertas caractarísticas
-def filterJobTitle(str):
-    excluir = ['practicante','aprendiz','estudiante','enferm','obra','cocina','venta']
-    keywords = sys.argv[4].split(',')
-    return ((not any(excl in str.lower() for excl in excluir)) 
-            and (any(keyword in str.lower() for keyword in keywords)))
-
 ## Función para extraer la información básica a exportar
 def get_job_info(soup):
     ## buscamos el tag "padre"
@@ -83,7 +76,8 @@ def get_job_info(soup):
         job_lst.append({'Titulo': elem.find('h2').text.strip(),
                'Empresa': data_compl[0].strip(),
                'Ciudad': data_compl[-1].strip(),
-               'Link': href_.strip()
+               'Link': href_.strip(),
+               'fecha_publicacion': get_time(elem.find('p',class_='fs13').text.strip()),
                 })
 
     return job_lst
@@ -118,7 +112,7 @@ if __name__ == '__main__':
     # start_time = time.time()
     dict_vacantes_v1 = getInfo()
     
-    dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
+    dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'],keywords)]
     claves = list(dict_vacantes[0].keys())
 
     ## creamos directorio para contener archivos si no existe

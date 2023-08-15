@@ -15,10 +15,11 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
+from funciones_varias import *
 
 root_page = 'https://www.elempleo.com'
 main_page = 'https://www.elempleo.com/co/ofertas-empleo'
-
+keywords = sys.argv[4]
 
 # ## Se define la URL que se pasará a Webdriver
 def getUrl():
@@ -66,14 +67,7 @@ def get_job_info(page_source):
     return job_lst
 
 
-## Se filtran los títulos de vacantes que cumplan con ciertas caractarísticas
-def filterJobTitle(str):
-    excluir = ['practicante','aprendiz','estudiante','enferm','obra','cocina','venta']
-    keywords = sys.argv[4].split(',')
-    return ((not any(excl in str.lower() for excl in excluir)) 
-            and (any(keyword in str.lower() for keyword in keywords)))
-
-
+## pasar de página
 def next_page():
     time.sleep(1)
     arrow = '.js-btn-next'
@@ -126,7 +120,7 @@ if __name__ == '__main__':
     dict_vacantes_v1 = getJobs_elempleo()
     
     try:
-        dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'])]
+        dict_vacantes = [job for job in dict_vacantes_v1 if filterJobTitle(job['Titulo'],keywords)]
         claves = list(dict_vacantes[0].keys())
 
         ## creamos directorio para contener archivos si no existe
