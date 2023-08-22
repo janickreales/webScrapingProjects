@@ -131,7 +131,7 @@ if __name__ == '__main__':
         consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
         filename = f"vacantes/vacantes_elempleo_{sys.argv[1].replace(' ','-').lower()}_{consec}.csv"
         with open(filename,'w',newline='',encoding='utf-8-sig') as w:
-            writer = csv.DictWriter(w,fieldnames=claves)
+            writer = csv.DictWriter(w,fieldnames=claves,delimiter=';')
             writer.writeheader()
             writer.writerows(dict_vacantes)
 

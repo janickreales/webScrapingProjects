@@ -1,0 +1,184 @@
+Hadoop
+HPCC
+Storm
+Cassandra
+Data Catalog
+Atlas
+Qubole
+Flink
+CouchDB
+StatWing
+Xplenty
+Cloudera
+Hive
+Rapidminer
+OpenRefine
+Tableau
+MongoDB
+Datawrapper
+Microsoft Power BI
+SAP BusinessObjects
+Sisense
+TIBCO Spotfire
+Thoughtspot
+Qlik
+SAS
+Dataflow
+Stream Analytics
+Glue
+SAS Business Intelligence
+Tableau
+Cassandra
+Google Data Studio
+Redash
+Periscope Data
+Metabase
+Jupyter Notebook
+IBM Cognos
+Chartio
+Mode
+KNIME
+Looker
+RapidMiner
+Domo
+Oracle Analytics Cloud
+Python
+Excel
+Tableau
+RapidMiner
+KNIME
+Power BI
+Spark
+QlikView
+Talend
+S3
+Pentaho
+EMR
+EC2
+GCP
+OLAP
+Power Automate
+Gobierno
+Dynamo
+Splunk
+Spark
+Hive
+Airflow
+Kafka
+Snowflake Data Warehouse
+Tableau
+Power BI
+Redshift
+BigQuery
+Athena
+QuickSight
+Data Factory
+Databricks
+Python
+SQL
+PostgreSQL
+MongoDB
+Spark
+Kafka
+Redshift
+Snowflake
+Athena
+Airflow
+Big Query
+Tableau
+Looker
+Superset
+Hive
+Segment
+Dbt
+Redash
+Fivetran
+great_expectations
+Power BI
+Periscope
+Prefect
+Presto
+Metabase
+Airflow
+Delta Lake
+Data Lake Storage
+Drill
+Druid
+Flink
+Hadoop
+Hive
+HPCC Systems
+Hudi
+Iceberg
+Kafka
+Stitch
+Kylin
+Pinot
+Presto
+Samza
+Spark
+Storm
+Trino
+IAM
+Ranger
+Scala
+Java
+Javascript
+Composer
+MATLAB
+Azure Functions
+Logic App
+Lambda
+Devops
+Batch
+Streaming
+Machine Learning
+Cloud
+Database
+Bases de datos
+Business Intelligence
+Inteligencia de negocio
+ETL
+DWH
+Data Warehouse
+Data Warehousing
+Docker
+Kubernetes
+Virtual Machine
+Astronomer
+Aws
+Certification
+Certificacion
+GIT
+CI/CD
+ADF
+Synapse
+MySQL
+SAP
+Azure
+Google
+IBM
+Governance
+Gobernanza
+Oracle
+English
+Inglés
+Ingles
+Agile
+Ágil
+Agil
+SCRUM
+API
+NoSQL
+Postgres
+SQL Server
+FastAPI
+Certified
+Certificado
+Deep Learning
+Neural Networks
+Redes neuronales
+SSAS
+SSIS
+Integration Service
+Teradata

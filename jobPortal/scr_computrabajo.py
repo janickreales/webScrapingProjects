@@ -49,18 +49,6 @@ def extract_soup(url,params={}):
 
     return soup
 
-## Función para entrar a cada vacante y extraer el tag del salario. 
-## Se puede adecuar para extraer cualquier otra información (como descripción...)
-def extract_salario(link):
-    soup = extract_soup(link)
-    oferta = soup.find('div', attrs={'div-link':'oferta'})
-
-    salario = oferta.find('span').text
-    # texto = oferta.find('p').text
-
-    return salario
-
-
 ## Función para extraer la información básica a exportar
 def get_job_info(soup):
     ## buscamos el tag "padre"
@@ -73,11 +61,12 @@ def get_job_info(soup):
         href_ = elem.find('a')['href']
         href_ = f'{main_page}{href_}'
 
-        job_lst.append({'Titulo': elem.find('h2').text.strip(),
+        job_lst.append({
+                'Titulo': elem.find('h2').text.strip(),
                'Empresa': data_compl[0].strip(),
                'Ciudad': data_compl[-1].strip(),
                'Link': href_.strip(),
-               'fecha_publicacion': get_time(elem.find('p',class_='fs13').text.strip()),
+               'fecha_publicacion': get_time(elem.find('p',class_='fs13').text.strip())
                 })
 
     return job_lst
@@ -123,7 +112,7 @@ if __name__ == '__main__':
     consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
     filename = f"vacantes/vacantes_computrabajo_{sys.argv[1].replace(' ','-').lower()}_{consec}.csv"
     with open(filename,'w',newline='',encoding='utf-8-sig') as w:
-        writer = csv.DictWriter(w,fieldnames=claves)
+        writer = csv.DictWriter(w,fieldnames=claves,delimiter=';')
         writer.writeheader()
         writer.writerows(dict_vacantes)
 
