@@ -81,7 +81,7 @@ print(f'tiempo total con hilos: {tf}')
 
 
 comment_words = ' '.join(lista2)+' '
-
+comment_words = comment_words.replace('english','inglés')
 # --------------------------------------------------------------------------------------------------------------------------
 
 dict1 = {}
@@ -95,30 +95,9 @@ print(dict1)
 
 
 
-
-# texto_grande = ' '.join(t.lower() for t in df_compu.texto)
-
-# dict1 = {}
-
-# for c in tech_words:
-#     conteo = texto_grande.count(c.lower())
-#     if conteo > 0:
-#         dict1[c]=conteo
-
-# print(sorted(dict1, reverse=True, key=lambda k: dict1[k]))
-# print(dict1)
-
-# dict1 = conteo(texto_grande)
-
-# for x in sorted(dict1.keys(), reverse=True, key=lambda k: dict1[k]):
-#    print(f'{x} appears {dict1[x]} times')
-
-
-
-
 #####----------------------------------------------------------------------------------
 # comment_words = ''
-# stopwords = set(STOPWORDS)
+stopwords = set(STOPWORDS)
 
 
 # for val in df_compu.texto:
@@ -135,16 +114,16 @@ print(dict1)
      
 #     comment_words += " ".join(tokens)+" "
 
-# wordcloud = WordCloud(width = 800, height = 800,
-#                 background_color ='white',
-#                 stopwords = stopwords,
-#                 min_font_size = 10).generate(comment_words)
+wordcloud = WordCloud(width = 800, height = 800,
+                background_color ='white',
+                # stopwords = stopwords,
+                min_font_size = 10).generate_from_frequencies(dict1)
  
-# # plot the WordCloud image                      
-# plt.figure(figsize = (8, 8), facecolor = None)
-# plt.imshow(wordcloud)
-# plt.axis("off")
-# plt.tight_layout(pad = 0)
+# plot the WordCloud image                      
+plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.tight_layout(pad = 0)
  
-# plt.show()
+plt.show()
 

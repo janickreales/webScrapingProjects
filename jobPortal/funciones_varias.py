@@ -25,7 +25,7 @@ def get_time(d_str):
 
 ## filtro vacantes empleo por keywords
 def filterJobTitle(str,keywords):
-    excluir = ['practicante','aprendiz','estudiante','enferm','obra','cocina','venta']
+    excluir = ['practicante','aprendiz','estudiante','enferm','obra','cocina','venta','agente','call']
     keywords = keywords.split(',')
     return ((not any(excl in str.lower() for excl in excluir)) 
             and (any(keyword in str.lower() for keyword in keywords)))

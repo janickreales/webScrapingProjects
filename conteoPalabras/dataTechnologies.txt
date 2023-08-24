@@ -36,7 +36,6 @@ Metabase
 Jupyter Notebook
 IBM Cognos
 Chartio
-Mode
 KNIME
 Looker
 RapidMiner
@@ -138,6 +137,8 @@ Database
 Bases de datos
 Business Intelligence
 Inteligencia de negocio
+Business Analytics
+Data Analytics
 ETL
 DWH
 Data Warehouse
