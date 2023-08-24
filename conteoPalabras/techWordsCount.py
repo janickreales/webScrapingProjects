@@ -19,20 +19,21 @@ from funciones_varias import *
 
 ## Comprobación si ya hay archivos generados de la fecha
 
-fecha_hoy = time.strftime('%Y%m%d', time.localtime())
+fecha_hoy = '20230823' #time.strftime('%Y%m%d', time.localtime())
+consec = time.strftime('%Y%m%d_%H%M%S', time.localtime())
 path_portal = 'D:/LEARNING/PYTHON/webScrapingProjects/jobPortal/'
 keywords = 'data,bi,dato,python,sql,azure,aws'
 
 if not any(fecha_hoy in l for l in os.listdir('vacantes')):
     
     arch1 = subprocess.check_output([sys.executable, path_portal+"scr_computrabajo.py",'datos','medellin','7',keywords])
-    ruta1 = f"{os.getcwd()}/{arch1.strip().decode()}".replace('\\',"/")
+    print(f"{arch1.strip().decode()}".replace('\\',"/"))
 
     arch2 = subprocess.check_output([sys.executable, path_portal+"scr_indeed.py",'datos','medellin','7',keywords])
-    ruta2 = f"{os.getcwd()}/{arch2.strip().decode()}".replace('\\',"/")
+    print(f"{arch2.strip().decode()}".replace('\\',"/"))
 
     arch3 = subprocess.check_output([sys.executable, path_portal+"scr_elempleo.py",'datos','medellin','hace-1-semana',keywords])
-    ruta3 = f"{os.getcwd()}/{arch3.strip().decode()}".replace('\\',"/")
+    print(f"{arch3.strip().decode()}".replace('\\',"/"))
 
 
 ### --------------------------------------------------------------------------------------------
@@ -103,6 +104,8 @@ for word in tech_words:
      if c > 0:
         dict_frec[word] = c
 
+dict_file = open(f'json/frec_{consec}.json','w')
+dict_file.write(str(dict_frec))
 
 ## ----------------------------------   wordcount     
 
