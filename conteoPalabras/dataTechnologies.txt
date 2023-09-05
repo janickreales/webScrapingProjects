@@ -16,7 +16,7 @@ OpenRefine
 Tableau
 MongoDB
 Datawrapper
-Microsoft Power BI
+Power BI
 SAP BusinessObjects
 Sisense
 TIBCO Spotfire
@@ -70,7 +70,11 @@ Power BI
 Redshift
 BigQuery
 Athena
+Prompt
+LLM
+GPT
 QuickSight
+terraform
 Data Factory
 Databricks
 Python
@@ -101,6 +105,7 @@ Metabase
 Airflow
 Delta Lake
 Data Lake Storage
+Lakehouse
 Drill
 Druid
 Flink
@@ -143,6 +148,8 @@ ETL
 DWH
 Data Warehouse
 Data Warehousing
+Data Mart
+Datamart
 Docker
 Kubernetes
 Virtual Machine
@@ -183,3 +190,6 @@ SSAS
 SSIS
 Integration Service
 Teradata
+Microsoft
+Google
+Amazon

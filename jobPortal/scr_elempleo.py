@@ -57,10 +57,17 @@ def get_job_info(page_source):
         p_date = elem.find('span',class_='info-publish-date').text.strip()
         p_date = p_date.replace('Publicado ','')
 
+        ## link
+        if root_page in href_:
+            link_url = href_
+        else:
+            link_url = f'{root_page}{href_}'
+
+        # jobs
         job_lst.append({'Titulo': elem.find('a').text.strip(),
                'Empresa': elem.find('span',class_='info-company-name').text.strip(),
                'Ciudad': elem.find('span',class_='info-city').text.strip(),
-               'Link': f'{root_page}{href_}',
+               'Link': f'{link_url}',
                'fecha_publicacion': f'{p_date}'
                 })
 
