@@ -78,6 +78,7 @@ terraform
 Data Factory
 Databricks
 Python
+R
 SQL
 PostgreSQL
 MongoDB

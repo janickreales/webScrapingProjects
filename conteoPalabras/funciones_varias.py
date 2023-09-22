@@ -31,3 +31,17 @@ def generar_sublistas(lista, n):
         sublista = lista[i:i+n]
         sublistas.append(sublista)
     return sublistas
+
+
+#### REEMPLAZO DE TÉRMINOS SIMILARES
+replacers = [('inglés','english'),('ingles','english'),('bases de datos', 'database'),('á', 'a')
+             ,('Inteligencia de negocio','Business Intelligence'),('integration service','SSIS')
+             ,('analysis service','ssas')]
+
+def fn_replace_words(texto):
+    texto = texto.lower()
+    
+    for tup in replacers:
+        texto = texto.replace(tup[0].lower(),tup[1].lower())
+
+    return texto
